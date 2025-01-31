@@ -1,0 +1,72 @@
+.root {
+  --card-background-color: var(--concorde-card-background-color, #ffffff);
+  --card-hover-background-color: var(
+    --concorde-card-hover-background-color,
+    var(--card-background-color)
+  );
+
+  font-family: var(--concorde-font-family);
+  background-color: var(--card-background-color);
+  box-shadow: var(--concorde-card-shadow);
+  border-radius: min(var(--concorde-border-radius), 1.25rem);
+  position: relative;
+  padding: calc(var(--concorde-spacing) * 6);
+  transition: var(--concorde-transition-effect);
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      background-color: var(--card-hover-background-color);
+      box-shadow: var(--concorde-card-shadow-hover);
+      transform: translateY(-0.5em);
+    }
+  }
+  &.noHover {
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        box-shadow: var(--concorde-card-shadow);
+        transform: none;
+      }
+    }
+  }
+}
+
+/* Featured Card */
+.featured {
+  --concorde-default-featured-color: #efbf02;
+  --concorde-default-featured-label-color: #ffffff;
+
+  --featured-color: var(
+    --concorde-card-featured-color,
+    var(--concorde-secondary-color, var(--concorde-default-featured-color))
+  );
+  --featured-label-color: var(
+    --concorde-card-featured-label-color,
+    var(--concorde-default-featured-label-color)
+  );
+
+  border: 4px solid var(--featured-color);
+  box-shadow: 0px -30px var(--featured-color), var(--concorde-card-shadow);
+
+  &::before {
+    content: var(--concorde-card-featured-text);
+    text-align: center;
+    left: 0;
+    top: -36px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    color: var(--featured-label-color);
+    font-size: var(--concorde-text-base);
+    font-weight: 700;
+    padding-block: 8px;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      box-shadow: 0px -30px var(--featured-color),
+        var(--concorde-card-shadow-hover);
+      transition: all var(--concorde-transition-effect) 0s;
+    }
+  }
+}

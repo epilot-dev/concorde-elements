@@ -1,0 +1,45 @@
+import type { IconProps } from '..'
+
+export type RatingProps = {
+  /**
+   * The value of the rating.
+   */
+  value?: number
+
+  /**
+   * The maximum value of the rating.
+   */
+  max?: number
+
+  /**
+   * The callback function when the rating value changes.
+   */
+  onChange?: (value: number) => void
+
+  /**
+   * The name of the icon.
+   *
+   * Defaults to `star`.
+   */
+  iconName?: IconProps['name']
+
+  /**
+   * The class name of the rating.
+   */
+  className?: string
+
+  /**
+   * The labels of the rating icons.
+   */
+  labels?: string[]
+
+  /**
+   * The id of the rating.
+   */
+  id?: string
+
+  /**
+   * The accessible name of the rating group.
+   */
+  name?: string
+}

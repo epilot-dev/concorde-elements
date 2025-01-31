@@ -1,0 +1,36 @@
+{
+  "extends": "../tsconfig.settings.json",
+  "compilerOptions": {
+    "target": "ES6",
+    "jsx": "react-jsx",
+    "baseUrl": "./",
+    "downlevelIteration": true,
+    "module": "ESNext",
+    "forceConsistentCasingInFileNames": true,
+    "paths": {
+      "@": [
+        ""
+      ],
+      "*": [
+        "src/*",
+        "node_modules/*"
+      ]
+    },
+    "rootDir": "src",
+    "outDir": "dist",
+    "types": [
+      "@testing-library/jest-dom",
+      "google.maps"
+    ]
+  },
+  "include": [
+    "src",
+    "types",
+    "src/stories",
+    "./styles.d.ts"
+  ],
+  "exclude": [
+    "src/**/stories",
+    "src/__mocks__"
+  ]
+}

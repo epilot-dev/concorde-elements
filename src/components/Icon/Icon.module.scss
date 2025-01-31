@@ -1,0 +1,11 @@
+.root {
+  --color: var(--icon-color, currentColor);
+
+  color: var(--color);
+  font-size: var(--icon-size, 20px);
+  font-variation-settings: var(--icon-is-filled);
+
+  &:hover {
+    color: var(--icon-hover-color, var(--color));
+  }
+}

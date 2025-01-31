@@ -1,0 +1,20 @@
+.root {
+  font-family: var(--concorde-font-family);
+  color: var(--link-color);
+  text-decoration: none;
+
+  &:hover {
+    color: var(--link-hover-color, var(--link-color));
+    text-decoration: underline;
+  }
+}
+
+.disabled {
+  pointer-events: none;
+  cursor: default;
+
+  &:hover {
+    color: var(--link-color);
+    text-decoration: none;
+  }
+}
