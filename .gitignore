@@ -1,0 +1,16 @@
+*.log
+.DS_Store
+node_modules
+storybook-static
+.cache
+dist
+.vscode
+.idea
+.eslintcache
+.npmrc
+test-report.xml
+.yarn
+build-storybook.log
+**/*.module.scss.d.ts
+
+*storybook.log
