@@ -1,0 +1,34 @@
+/* Root Styles */
+.root {
+  font-family: var(--concorde-font-family);
+  color: var(--concorde-primary-text);
+  position: relative;
+  display: flex;
+}
+
+/* Badge Styles */
+.badge {
+  z-index: auto;
+  position: absolute;
+  top: 0;
+  padding: 0 var(--concorde-spacing);
+  right: 0;
+  font-size: var(--concorde-text-xs);
+  white-space: nowrap;
+  border-radius: 50%;
+  transform: translate(50%, -50%);
+  transform-origin: 100% 0;
+}
+
+/* Variant Styles */
+.primary {
+  color: var(--concorde-primary-color);
+}
+
+.secondary {
+  color: var(--concorde-secondary-color);
+}
+
+.error {
+  color: var(--concorde-error-color);
+}
