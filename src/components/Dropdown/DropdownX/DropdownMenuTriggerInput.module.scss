@@ -1,0 +1,11 @@
+/* Root Stypes */
+.root {
+  cursor: pointer;
+  max-width: 100%;
+  text-overflow: ellipsis;
+}
+
+/* Disabled Stypes */
+.disabled {
+  cursor: default;
+}
