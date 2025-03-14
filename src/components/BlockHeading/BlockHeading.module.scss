@@ -1,0 +1,42 @@
+.contentContainer {
+  margin-bottom: calc(var(--concorde-spacing) * 2.75);
+}
+
+.noTitleSubtitle {
+  margin-bottom: 0;
+}
+
+.title {
+  font-weight: 600;
+}
+
+.subtitle {
+  margin-top: calc(var(--concorde-spacing) * 1.75);
+}
+
+.required {
+  &:has(.title) {
+    .title::after {
+      content: '*';
+      font-size: 1rem;
+      margin-left: 4px;
+    }
+  }
+
+  &:has(.subtitle):not(:has(.title)) {
+    .subtitle::after {
+      content: '*';
+      font-size: 1rem;
+      margin-left: 4px;
+    }
+  }
+
+  &:not(:has(.title), :has(.subtitle)) {
+    .required::after {
+      content: '*';
+      font-size: 1rem;
+      position: absolute;
+      right: -16px;
+    }
+  }
+}
