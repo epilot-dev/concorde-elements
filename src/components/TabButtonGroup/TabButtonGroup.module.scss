@@ -1,0 +1,23 @@
+@use '../../breakpoints' as breakpoints;
+
+:root {
+  /**
+   * Set default values for tab button color components, which are used as a background color to the tab buttons
+   */
+  --concorde-tab-button-color-components: 255, 255, 255;
+  --concorde-tab-button-text-color: var(--concorde-primary-text, black);
+
+  font-family: var(--concorde-font-family);
+}
+
+/* Tab button group */
+.tabButtonGroup {
+  display: flex;
+  flex-direction: column;
+  padding: calc(var(--concorde-spacing) * 4);
+  @media (min-width: breakpoints.$concorde-breakpoint-sm) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: calc(var(--concorde-spacing) * 2);
+  }
+}

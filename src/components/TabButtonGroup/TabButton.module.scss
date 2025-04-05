@@ -1,0 +1,40 @@
+@use '../../breakpoints' as breakpoints;
+
+.tabButton {
+  cursor: pointer;
+  border-radius: var(--concorde-border-radius);
+  border: 0;
+  appearance: none;
+  padding: calc(var(--concorde-spacing) * 2) calc(var(--concorde-spacing) * 4);
+  line-height: 1.6;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: calc(var(--concorde-spacing) * 2);
+  background: transparent;
+  min-width: calc(var(--concorde-spacing) * 32);
+  overflow-y: hidden;
+  -webkit-tap-highlight-color: transparent;
+  color: var(--concorde-primary-text);
+  font-family: var(--concorde-font-family);
+  &:hover {
+    background-color: rgba(var(--concorde-tab-button-color-components), 0.05);
+  }
+  &.tabButtonSelected {
+    font-weight: 600;
+    color: var(--concorde-tab-button-text-color);
+    background-color: rgba(var(--concorde-tab-button-color-components), 0.18);
+  }
+
+  /* Tab button label */
+  .tabLabel {
+    line-height: 1.25;
+    text-overflow: ellipsis;
+    line-clamp: 2;
+  }
+
+  /* Tab button icon */
+  .tabButtonIcon {
+    margin: 0;
+  }
+}
