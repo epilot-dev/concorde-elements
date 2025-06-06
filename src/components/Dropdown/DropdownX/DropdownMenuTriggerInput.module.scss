@@ -1,0 +1,22 @@
+/* Root Stypes */
+.root {
+  cursor: pointer;
+  max-width: 100%;
+  text-overflow: ellipsis;
+}
+
+/* Disabled Stypes */
+.disabled {
+  cursor: default;
+}
+
+/* Readonly Styles */
+.readonly {
+  cursor: default;
+  user-select: none;
+  opacity: 1;
+}
+
+.readonlyIcon {
+  opacity: 0.5;
+}
