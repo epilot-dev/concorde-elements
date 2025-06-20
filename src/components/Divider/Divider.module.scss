@@ -1,0 +1,38 @@
+/* Root Styles */
+.root {
+  --divider-thickness: var(--concorde-divider-thickness);
+  --divider-color: var(
+    --concorde-divider-custom-color,
+    var(--concorde-divider-color)
+  );
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Divider Styles */
+.divider {
+  border: none;
+  height: var(--divider-thickness);
+  margin: var(--concorde-spacing) 0;
+  background-color: var(--divider-color);
+  width: 100%;
+  flex-grow: 1;
+  border-radius: var(--concorde-border-radius);
+}
+
+/* Orientation Styles */
+.orientation-horizontal {
+  width: 100%;
+}
+
+.orientation-vertical {
+  flex-direction: column;
+  height: 100%;
+
+  .divider {
+    width: var(--divider-thickness);
+    height: 100%;
+  }
+}
