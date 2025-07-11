@@ -1,0 +1,23 @@
+.root {
+  --link-color: var(--concorde-link-color, var(--concorde-primary-color));
+  --link-hover-color: var(--concorde-link-hover-color, var(--link-color));
+
+  font-family: var(--concorde-font-family);
+  color: var(--link-color);
+  text-decoration: none;
+
+  &:hover {
+    color: var(--link-hover-color);
+    text-decoration: underline;
+  }
+}
+
+.disabled {
+  pointer-events: none;
+  cursor: default;
+
+  &:hover {
+    color: var(--link-color);
+    text-decoration: none;
+  }
+}
