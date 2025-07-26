@@ -1,0 +1,8 @@
+.root {
+  transition: var(--concorde-transition-effect) transform;
+  transform: rotate(0deg);
+}
+
+.expanded {
+  transform: rotate(180deg);
+}
