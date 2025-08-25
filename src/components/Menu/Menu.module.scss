@@ -1,0 +1,15 @@
+/* Menu Root Styles */
+.root {
+  --background-color: var(--concorde-menu-bg-color, var(--concorde-surface-background));
+  --box-shadow: 0px 3px 8px 0px rgba(0, 0, 0, 0.24);
+
+  font-family: var(--concorde-font-family);
+  margin: 0;
+  padding: calc(var(--concorde-spacing) * 3) 0;
+  position: relative;
+  list-style-type: "";
+  border-radius: min(var(--concorde-border-radius), 1.25rem);
+  background-color: var(--background-color);
+  box-shadow: var(--box-shadow);
+  min-width: 112px;
+}

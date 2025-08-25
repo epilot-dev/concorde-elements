@@ -1,0 +1,14 @@
+div.sb-story > div:not([data-name="Accessibility"]) {
+  min-width: 250px;
+}
+
+.docs-story :not(.sb-story *) {
+  transform: none;
+  overflow: visible;
+}
+
+div.sbdocs,
+div.docs-story {
+  overflow: visible;
+}
+
