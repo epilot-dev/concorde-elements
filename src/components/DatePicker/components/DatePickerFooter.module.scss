@@ -1,0 +1,19 @@
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 16px 20px 20px;
+  gap: 24px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.footerButton {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--datepicker-selected-bg-color);
+
+  &:hover {
+    filter: var(--datepicker-selected-filter);
+  }
+}
