@@ -1,0 +1,18 @@
+.root {
+    --card-background-color: var(--concorde-card-background-color, var(--concorde-card-default-background));
+    --card-hover-background-color: var(
+      --concorde-card-hover-background-color,
+      var(--card-background-color)
+    );
+    --card-shadow: var(
+      --concorde-card-custom-shadow,
+      var(--concorde-card-shadow)
+    );
+  
+    font-family: var(--concorde-font-family);
+    background-color: var(--card-background-color);
+    box-shadow: var(--card-shadow);
+    border-radius: min(var(--concorde-border-radius), 1.25rem);
+    position: relative;
+    padding: calc(var(--concorde-spacing) * 5);
+}
