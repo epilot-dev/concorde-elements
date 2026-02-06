@@ -1,0 +1,181 @@
+@use '../../../breakpoints' as breakpoints;
+
+.header {
+  display: flex;
+  flex-direction: column;
+
+  >* {
+    width: 100%;
+  }
+}
+
+.headerPadded {
+  gap: 16px;
+}
+
+.selectContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+
+  @media (max-width: breakpoints.$concorde-breakpoint-sm) {
+    gap: 0;
+  }
+}
+
+.hideTime {
+  @media (max-width: breakpoints.$concorde-breakpoint-sm) {
+    gap: 16px;
+    justify-content: space-between;
+  }
+}
+
+.selectContainerPadded {
+  padding: 0 12px;
+}
+
+.monthYearSelectContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12.3px;
+  width: auto;
+
+  @media (max-width: 480px) {
+    gap: 0
+  }
+}
+
+.selectFullWidth {
+  width: 100%;
+}
+
+.headerSelectButtonDefault {
+  padding: 0;
+  font-weight: 400;
+  gap: 0;
+
+  &:hover {
+    filter: var(--datepicker-hover-filter);
+  }
+
+  &:active {
+    background-color: var(--datepicker-calendar-bg-color);
+    filter: var(--datepicker-hover-filter);
+  }
+
+  @media (max-width: 380px) {
+    font-size: 14px;
+  }
+}
+
+.headerSelectButton {
+  opacity: 0.5;
+}
+
+.activeHeaderSelectButton {
+  opacity: 1;
+}
+
+.selectIcon {
+  visibility: hidden;
+  border-radius: var(--datepicker-border-radius);
+}
+
+.selectIconSize {
+  font-size: 24px;
+
+  @media (max-width: breakpoints.$concorde-breakpoint-xs) {
+    font-size: 18px;
+  }
+}
+
+.selectIconButton {
+  &:hover {
+    filter: var(--datepicker-hover-filter);
+  }
+
+  &:active {
+    background-color: var(--datepicker-calendar-bg-color);
+    filter: var(--datepicker-hover-filter);
+  }
+
+  span {
+    font-size: 24px;
+  }
+
+  @media (max-width: breakpoints.$concorde-breakpoint-xs) {
+    span {
+      font-size: 18px;
+    }
+  }
+
+  @media (max-width: 300px) {
+    width: 15px;
+  }
+}
+
+.selectIconVisible {
+  visibility: visible;
+}
+
+.disabledSelectIcon {
+  opacity: 0.15;
+}
+
+.selectGrid {
+  overflow-y: scroll;
+  max-height: 270px;
+  // Hide scrollbar in Firefox
+  scrollbar-width: none;
+  scrollbar-color: transparent transparent;
+
+  // Hide scrollbar in Chrome, Safari and Opera
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  &::-webkit-scrollbar {
+    width: 0;
+    background-color: transparent;
+  }
+}
+
+.selectItemButton {
+  padding: 16px 8px 16px 12px;
+  width: 100%;
+  background: transparent;
+  text-align: left;
+  justify-content: flex-start;
+  font-weight: 400;
+  gap: 12px;
+  border-radius: 0;
+
+  &:hover,
+  &:focus-visible {
+    background-color: var(--datepicker-calendar-bg-color);
+    filter: var(--datepicker-hover-filter);
+  }
+
+  &.activeSelectItemButton {
+    background-color: var(--datepicker-calendar-bg-color);
+    filter: var(--datepicker-selected-filter);
+  }
+}
+
+.mobileHeader {
+  display: grid;
+  grid-template-columns: repeat(2, max-content);
+  gap: 16px;
+  font-size: 30px;
+  color: var(--concorde-secondary-text)
+}
+
+.selectedTab {
+  color: var(--concorde-primary-text)
+}
+
+.mobileHeaderIcon {
+  cursor: pointer;
+}
