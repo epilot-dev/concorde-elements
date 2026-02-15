@@ -1,0 +1,104 @@
+.content {
+  border-radius: min(var(--concorde-border-radius), 20px);
+  padding: calc(var(--concorde-spacing) * 3);
+  background-color: var(--concorde-surface-background);
+  animation-duration: 200ms;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+  z-index: 1500;
+  pointer-events: auto;
+  outline: none;
+  
+  &[data-state='open'] {
+    &[data-side='top'] {
+      animation-name: slideDownAndFade, zoomIn;
+    }
+    
+    &[data-side='right'] {
+      animation-name: slideLeftAndFade, zoomIn;
+    }
+    
+    &[data-side='bottom'] {
+      animation-name: slideUpAndFade, zoomIn;
+    }
+    
+    &[data-side='left'] {
+      animation-name: slideRightAndFade, zoomIn;
+    }
+  }
+
+  &[data-state='closed'] {
+    animation-name: fadeOut, zoomOut;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(0.95);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes zoomOut {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(0.95);
+  }
+}
+
+@keyframes slideUpAndFade {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideRightAndFade {
+  from {
+    opacity: 0;
+    transform: translateX(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideDownAndFade {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideLeftAndFade {
+  from {
+    opacity: 0;
+    transform: translateX(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

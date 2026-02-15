@@ -1,0 +1,14 @@
+.root {
+  --icon-color: var(--concorde-icon-color, currentColor);
+  --icon-size: var(--concorde-icon-size);
+  --icon-is-filled: var(--concorde-icon-is-filled);
+  --icon-hover-color: var(--concorde-icon-hover-color, var(--icon-color));
+
+  color: var(--icon-color);
+  font-size: var(--icon-size, 20px);
+  font-variation-settings: var(--icon-is-filled);
+
+  &:hover {
+    color: var(--icon-hover-color);
+  }
+}

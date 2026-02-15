@@ -1,0 +1,243 @@
+.root {
+  --button-label-color: var(--concorde-button-label-color);
+  --button-background-color: var(--concorde-button-background-color);
+  --button-hover-bg-color: var(--concorde-button-hover-bg-color);
+  --button-active-bg-color: var(--concorde-button-active-bg-color);
+  --button-gap: var(--concorde-button-gap, var(--concorde-spacing));
+
+  --primary-color: var(
+    --button-label-color,
+    var(--concorde-button-default-text)
+  );
+  --primary-danger-color: var(--button-label-color, var(--primary-color));
+  --ghost-color: var(--button-label-color, var(--concorde-primary-color));
+  --ghost-danger-color: var(--button-label-color, var(--concorde-error-color));
+
+  --default-primary-background-color: var(
+    --button-background-color,
+    var(--concorde-primary-color)
+  );
+  --primary-background-color: var(
+    --concorde-primary-button-background-color,
+    var(--default-primary-background-color)
+  );
+  --primary-hover-bg-color: var(
+    --concorde-primary-button-hover-bg-color,
+    var(--button-hover-bg-color)
+  );
+  --primary-danger-background-color: var(
+    --button-background-color,
+    var(--concorde-error-color)
+  );
+  --ghost-background-color: var(--button-background-color, transparent);
+  --ghost-danger-background-color: var(
+    --button-background-color,
+    var(--ghost-background-color)
+  );
+
+  font-family: var(--concorde-font-family);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: calc(var(--concorde-spacing) * 2.5) calc(var(--concorde-spacing) * 4);
+  width: fit-content;
+  cursor: pointer;
+  font-weight: 700;
+  text-decoration: none;
+  gap: var(--button-gap);
+  color: var(--concorde-primary-text);
+  background-color: transparent;
+  font-size: var(--concorde-text-base);
+  transition: var(--concorde-transition-effect) transform;
+  border: 1px solid;
+  border-radius: var(--concorde-border-radius);
+  border-color: transparent;
+  box-sizing: border-box;
+
+  /* Ensure that any button focused on with keyboard is visually highlighted */
+  &:focus-visible {
+    outline: 2px solid var(--concorde-primary-color);
+    outline-offset: 0.25rem;
+  }
+}
+
+.button-label {
+  line-height: 1.5;
+}
+
+.hasChildren {
+  flex-direction: column;
+}
+
+.labelContainer {
+  gap: var(--button-gap);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* Variants */
+
+/* Primary Variant */
+.variant-primary {
+  color: var(--primary-color);
+  background: var(--primary-background-color);
+
+  &:not(.disabled) {
+    /* Automatic hover and active colors and their respective fallback colors */
+    --hover: linear-gradient(
+        0deg,
+        rgba(255, 255, 255, 0.12) 0%,
+        rgba(255, 255, 255, 0.12) 100%
+      ),
+      var(--concorde-primary-color);
+
+    --active: linear-gradient(
+        0deg,
+        rgba(255, 255, 255, 0.18) 0%,
+        rgba(255, 255, 255, 0.18) 100%
+      ),
+      var(--concorde-primary-color);
+
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        background: var(--primary-hover-bg-color, var(--hover));
+      }
+
+      &:hover:not(.toggle) {
+        box-shadow: var(--concorde-button-shadow-hover)
+          rgba(var(--concorde-primary-color-rgb), 0.4);
+        transform: translateY(-0.25rem);
+      }
+    }
+
+    &:active {
+      background: var(--primary-hover-bg-color, var(--active));
+    }
+  }
+}
+
+/* Primary Danger Variant */
+.variant-primary-danger {
+  color: var(--primary-danger-color);
+  background: var(--primary-danger-background-color);
+
+  &:not(.disabled) {
+    /* Automatic hover and active colors and their respective fallback colors */
+    --hover: linear-gradient(
+        0deg,
+        rgba(255, 255, 255, 0.12) 0%,
+        rgba(255, 255, 255, 0.12) 100%
+      ),
+      var(--concorde-error-color);
+
+    --active: linear-gradient(
+        0deg,
+        rgba(255, 255, 255, 0.18) 0%,
+        rgba(255, 255, 255, 0.18) 100%
+      ),
+      var(--concorde-error-color);
+
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        background: var(--button-hover-bg-color, var(--hover));
+      }
+
+      &:hover:not(.toggle) {
+        box-shadow: var(--concorde-button-shadow-hover)
+          rgba(var(--concorde-error-color-rgb), 0.4);
+        transform: translateY(-0.25rem);
+      }
+    }
+
+    &:active {
+      background: var(--button-active-bg-color, var(--active));
+    }
+  }
+}
+
+/* Ghost Variant */
+.variant-ghost {
+  color: var(--ghost-color);
+  background: var(--ghost-background-color);
+
+  &:not(.disabled) {
+    --hover: rgba(var(--concorde-primary-color-rgb), 0.12);
+    --active: rgba(var(--concorde-primary-color-rgb), 0.18);
+
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        background: var(--button-hover-bg-color, var(--hover));
+      }
+    }
+
+    &:active {
+      background: var(--button-active-bg-color, var(--active));
+    }
+  }
+}
+
+/* Ghost Danger Variant */
+.variant-ghost-danger {
+  color: var(--ghost-danger-color);
+  background: var(--ghost-danger-background-color);
+
+  &:not(.disabled) {
+    --hover: rgba(var(--concorde-error-color-rgb), 0.12);
+    --active: rgba(var(--concorde-error-color-rgb), 0.18);
+
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        background: var(--button-hover-bg-color, var(--hover));
+      }
+    }
+
+    &:active {
+      background: var(--button-active-bg-color, var(--active));
+    }
+  }
+}
+
+/* Outlined Variant */
+.variant-outlined {
+  color: var(--ghost-color);
+  background: var(--ghost-background-color);
+  border-color: var(
+    --concorde-outlined-button-border-color,
+    var(--concorde-primary-color)
+  );
+
+  &:not(.disabled) {
+    --hover: rgba(var(--concorde-primary-color-rgb), 0.12);
+    --active: rgba(var(--concorde-primary-color-rgb), 0.18);
+
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        background: var(--button-hover-bg-color, var(--hover));
+      }
+    }
+
+    &:active {
+      background: var(--button-active-bg-color, var(--active));
+    }
+  }
+}
+
+/* Disabled Variant */
+.variant-disabled {
+  cursor: auto;
+  color: var(--concorde-disabled-text);
+  background: var(--concorde-disabled-color);
+}
+
+/* Bare Variant */
+.variant-bare {
+  font-weight: 500;
+  padding: 0;
+  letter-spacing: normal;
+}
+
+/* Disabled State */
+.disabled {
+  opacity: 0.38;
+  cursor: auto;
+}

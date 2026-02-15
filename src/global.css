@@ -1,0 +1,70 @@
+:root {
+  /* typography */
+  --concorde-font-family: "Proxima Nova", Open Sans, Helvetica, Arial,
+    sans-serif;
+  --concorde-text-3xl: 2rem;
+  --concorde-text-2xl: 1.75rem;
+  --concorde-text-xl: 1.5rem;
+  --concorde-text-lg: 1.25rem;
+  --concorde-text-base: 1rem;
+  --concorde-text-sm: 0.875rem;
+  --concorde-text-xs: 0.75rem;
+
+  /* Color palette */
+  /* main colors */
+  --concorde-primary-color: #005eb4;
+  --concorde-secondary-color: #913997;
+  --concorde-disabled-color: #e0e2ec;
+  --concorde-error-color: #cc0005;
+  --concorde-success-color: #daf1da;
+
+  --concorde-outline: #74777f;
+  --concorde-divider-color: #deeaf7;
+
+  /* typography */
+  --concorde-primary-text: #001632;
+  --concorde-secondary-text: #717171;
+  --concorde-disabled-text: #43474e;
+  --concorde-disabled-label-text: #8c9dad;
+  --concorde-button-default-text: #ffffff;
+  --concorde-success-text: #286c2a;
+  --concorde-signature-pen-color: #005eb4;
+
+  /* background */
+  --concorde-default-background: #ffffff;
+  --concorde-surface-background: #ffffff;
+  --concorde-loading-background: #e0e0e0;
+  --concorde-neutral-surface: #e0e2ec;
+  --concorde-topbar-background: #005eb4;
+  --concorde-disabled-background: #e6eef7;
+  --concorde-card-default-background: #ffffff;
+
+  /* main colors rgb tuples */
+  --concorde-primary-color-rgb: 0, 94, 180;
+  --concorde-secondary-color-rgb: 145, 57, 151;
+  --concorde-error-color-rgb: 255, 58, 63;
+  --concorde-primary-text-rgb: 0, 22, 50;
+  --concorde-secondary-text-rgb: 113, 113, 113;
+  --concorde-default-background-rgb: 255, 255, 255;
+
+  /* coupons */
+  --concorde-coupon-cashback-color: var(--concorde-secondary-color);
+  --concorde-coupon-discount-color: var(--concorde-error-color);
+
+  /* other */
+  --concorde-spacing: 0.25rem;
+  --concorde-border-radius: 0.25rem;
+  --concorde-transition-effect: 0.25s ease-in-out;
+  --concorde-disabled-opacity: 0.38;
+
+  /* sizes */
+  --concorde-input-height: 48px;
+
+  /* Shadows */
+  --concorde-button-shadow-hover: 0 0.5rem 0.5rem -0.4rem;
+
+  /* Concorde Card Shadows */
+  --concorde-card-shadow: 0 0 1px rgba(0, 0, 0, 0.12), 0 8px 48px rgba(0, 0, 0, 0.08);
+  --concorde-card-shadow-hover: 0 0 1px rgba(0, 0, 0, 0.12), 0 8px 24px rgba(0, 0, 0, 0.16);
+  --concorde-image-stepper-button-shadow: 0 0 0.5rem rgba(var(--concorde-default-background-rgb), 0.5);
+ }

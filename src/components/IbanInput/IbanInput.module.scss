@@ -1,0 +1,17 @@
+.fullWidth {
+  width: 100%;
+}
+
+.hidden {
+  display: none;
+}
+
+.container-accessible {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}

@@ -1,0 +1,80 @@
+@use '../../breakpoints' as breakpoints;
+
+/* Root/Backdrop styles */
+.root {
+  --default-modal-spacing: calc(var(--concorde-spacing) * 5);
+  --modal-spacing: var(--concorde-modal-spacing, var(--default-modal-spacing));
+  background-color: rgb(0 0 0 / 0.5);
+  -webkit-tap-highlight-color: transparent;
+  position: fixed;
+  z-index: 1300;
+  inset: 0;
+  font-family: var(--concorde-font-family);
+  overflow: auto;
+  container-type: inline-size;
+  container-name: modal-root;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Modal Close Button styles */
+.closeButtonContainer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+}
+
+.closeButton {
+  padding: calc(var(--concorde-spacing) * 2);
+}
+
+/* Modal Body styles */
+.body {
+  position: relative;
+  max-height: 100vh;
+  height: 100%;
+  outline: none;
+  @container modal-root (max-width: #{breakpoints.$concorde-breakpoint-sm}) {
+    flex: 1;
+    > div {
+      border-radius: unset;
+    }
+  }
+  /* Container query for mobile breakpoint */
+  @container modal-root (min-width: #{breakpoints.$concorde-breakpoint-sm + 1px}) {
+    max-height: calc(100vh - calc(var(--concorde-spacing) * 10));
+    height: initial;
+  }
+}
+
+.content,
+.header,
+.actions {
+  padding: var(--modal-spacing);
+}
+
+/* Modal Header styles */
+.header {
+  padding-bottom: calc(var(--modal-spacing) / 2);
+}
+
+/* Modal Content styles */
+.content {
+  padding-top: calc(var(--modal-spacing) / 2);
+  padding-bottom: calc(var(--modal-spacing) / 2);
+
+  &:last-of-type {
+    padding-bottom: var(--modal-spacing);
+  }
+}
+
+/* Actions styles */
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: calc(var(--modal-spacing) / 2);
+  padding-top: calc(var(--modal-spacing) / 2);
+}

@@ -1,0 +1,67 @@
+@use '../../breakpoints' as breakpoints;
+
+/* Group Styles */
+.root {
+  display: inline-flex;
+  border-radius: var(--concorde-border-radius);
+  --concorde-outlined-button-border-color: var(
+    --concorde-toggle-button-border-color
+  );
+
+  @media (max-width: breakpoints.$concorde-breakpoint-sm) {
+    flex-wrap: wrap;
+  }
+}
+
+/* Group Item Styles */
+.itemRoot {
+  border-radius: 0;
+  text-wrap-mode: nowrap;
+  flex-wrap: wrap;
+  height: var(--concorde-input-height, 48px);
+
+  &:first-child {
+    margin-left: 0;
+    border-top-left-radius: var(--concorde-border-radius);
+    border-bottom-left-radius: var(--concorde-border-radius);
+  }
+
+  &:last-child {
+    border-top-right-radius: var(--concorde-border-radius);
+    border-bottom-right-radius: var(--concorde-border-radius);
+  }
+
+  & + * {
+    border-left: none;
+  }
+
+  &:focus-visible {
+    outline: var(--concorde-primary-color) auto 1px;
+  }
+
+  @media (max-width: breakpoints.$concorde-breakpoint-sm) {
+    font-size: var(--concorde-text-sm);
+    padding: calc(var(--concorde-spacing) * 1) calc(var(--concorde-spacing) * 2);
+  }
+}
+
+.errorText {
+  font-size: 12px;
+}
+
+.error {
+  color: var(--concorde-error-color);
+}
+
+.asterisk {
+  position: absolute;
+  top: 0;
+  right: -15px;
+  color: var(--concorde-secondary-text);
+}
+
+.container {
+  display: flex;
+  position: relative;
+  width: fit-content;
+}
