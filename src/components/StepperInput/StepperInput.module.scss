@@ -1,0 +1,118 @@
+.root {
+  --error-color: var(
+    --concorde-stepper-field-error-color,
+    var(--concorde-error-color)
+  );
+  --border-color: var(
+    --concorde-stepper-field-border-color,
+    var(--concorde-outline)
+  );
+  --adornment-radius: var(--concorde-border-radius);
+
+  font-family: var(--concorde-font-family);
+  display: flex;
+  flex-direction: column;
+  gap: var(--concorde-spacing);
+}
+
+.root--fullWidth {
+  width: 100%;
+}
+
+/* Label Styles */
+.label {
+  font-size: var(--concorde-text-base);
+  max-width: 100%;
+  line-height: 1;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  padding: 0;
+}
+
+/* Override TextField Styles */
+.input-field-root {
+  border-left: none;
+  border-right: none;
+
+  /* Turn off TextField root paddings and border */
+  > div {
+    padding-right: 0;
+    padding-left: 0;
+    border: none;
+  }
+
+  /* Turn off TextField root elements margins */
+  > div > * {
+    margin: 0;
+  }
+
+  /* Override styles for TextField input */
+  input {
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    padding-top: 0;
+    padding-bottom: 0;
+    text-align: center;
+    height: 40px;
+
+    /* Turn off number input arrows for Firefox */
+    appearance: textfield;
+    -moz-appearance: textfield;
+  }
+
+  /* Turn off number input arrows for Chrome, Safari, Edge, Opera */
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
+.input-field-root--fullWidth {
+  /* Sets the TextField as full width */
+  > div {
+    width: 100%;
+  }
+}
+
+/* Adornment Styles */
+.adornment {
+  padding: 0;
+  cursor: pointer;
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border-color);
+  border-radius: var(--adornment-radius);
+  background-color: transparent;
+
+  > span {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      filter: brightness(80%)
+    }
+  }
+}
+
+.adornment-left {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.adornment-right {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+/* Generic Error State Styles */
+.error {
+  color: var(--error-color);
+}
