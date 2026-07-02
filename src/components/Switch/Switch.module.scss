@@ -1,0 +1,121 @@
+/* Root Styles */
+.root {
+  --switch-border-radius: var(--concorde-switch-border-radius, 9999px);
+  --switch-unchecked-color: var(
+    --concorde-switch-unchecked-color,
+    var(--concorde-outline)
+  );
+  --switch-unchecked-background-color: var(
+    --concorde-switch-unchecked-background-color,
+    var(--concorde-neutral-surface)
+  );
+
+  font-family: var(--concorde-font-family);
+  color: var(--concorde-primary-text);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Position Styles */
+.position-start {
+  flex-direction: row;
+}
+
+.position-end {
+  flex-direction: row-reverse;
+}
+
+/* Switch Root Styles */
+.switch-root-container {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--concorde-spacing) * 2);
+}
+
+.switch-root {
+  padding: 4px;
+  padding-left: 2px;
+  width: 52px;
+  height: 32px;
+  min-height: 32px;
+  min-width: 52px;
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  padding-right: calc(var(--concorde-spacing) - 2px);
+  background-color: var(--switch-unchecked-background-color);
+  border-radius: var(--switch-border-radius);
+  border: 2px solid var(--switch-unchecked-color);
+  position: relative;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+  &[data-state='checked'] {
+    padding-top: calc(var(--concorde-spacing) - 2px);
+    padding-bottom: calc(var(--concorde-spacing) - 2px);
+    background-color: var(--concorde-primary-color);
+    border-color: var(--concorde-primary-color);
+    border: none;
+  }
+}
+
+/* Switch Thumb Styles */
+.thumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border-radius: var(--switch-border-radius);
+  transition: transform 100ms;
+  will-change: transform;
+  height: 24px;
+  width: 24px;
+
+  &[data-state='checked'] {
+    transform: translateX(21px);
+    background-color: white;
+  }
+}
+
+.thumb-placeholder {
+  background-color: var(--switch-unchecked-color);
+  border-radius: var(--switch-border-radius);
+  height: 16px;
+  width: 16px;
+}
+
+/* Label Styles */
+.label {
+  font-size: var(--concorde-text-base);
+  line-height: 160%;
+  font-weight: 400;
+}
+
+.label-clickable {
+  cursor: pointer;
+}
+
+/* Helper Text Styles */
+.helper-text {
+  margin: 0;
+  font-size: var(--concorde-text-xs);
+  margin-top: 0;
+  text-align: left;
+  font-weight: 400;
+  line-height: 160%;
+  white-space: nowrap;
+  color: var(--concorde-secondary-text, #43474e);
+  width: 100%;
+}
+
+/* Generic Disabled State Styles */
+.disabled {
+  opacity: var(--concorde-disabled-opacity);
+}
+
+/* Generic Error State Styles */
+.error {
+  color: var(--concorde-error-color);
+}

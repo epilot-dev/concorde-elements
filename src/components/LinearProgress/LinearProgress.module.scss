@@ -1,0 +1,26 @@
+/* Root styles */
+.root {
+  --linear-progress-height: var(--concorde-linear-progress-height);
+  --linear-progress-progress: var(--concorde-linear-progress-progress);
+  --linear-progress-background-color: var(
+    --concorde-linear-progress-background-color,
+    rgba(var(--concorde-primary-color-rgb), 0.18)
+  );
+
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: var(--linear-progress-height);
+  background-color: var(--linear-progress-background-color);
+  border-radius: var(--concorde-border-radius);
+  transform: translateZ(0);
+}
+
+/* Indicator styles */
+.indicator {
+  width: 100%;
+  height: 100%;
+  background-color: var(--concorde-primary-color);
+  transition: transform 660ms cubic-bezier(0.65, 0, 0.35, 1);
+  transform: var(--linear-progress-progress);
+}
