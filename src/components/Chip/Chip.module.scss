@@ -1,0 +1,53 @@
+.root {
+  --chip-background-color: var(--concorde-chip-background-color);
+  --chip-hover-background-color: var(--concorde-chip-hover-background-color,
+      var(--chip-background-color));
+  --chip-text-color: var(--concorde-chip-text-color, var(--concorde-primary-text));
+  --chip-hover-text-color: var(--concorde-chip-hover-text-color, var(--chip-text-color));
+
+  font-family: var(--concorde-font-family);
+  background-color: var(--chip-background-color);
+  color: var(--chip-text-color);
+  box-shadow: var(--concorde-chip-shadow);
+  border-radius: min(var(--concorde-border-radius), 1.25rem);
+  position: relative;
+  padding: calc(var(--concorde-spacing) * 1.5);
+  transition: var(--concorde-transition-effect);
+
+  &:hover {
+    background-color: var(--chip-hover-background-color);
+    color: var(--chip-hover-text-color);
+  }
+}
+
+.container {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  gap: var(--concorde-spacing);
+}
+
+.iconLabelContainer {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--concorde-spacing) * 2);
+  padding: calc(var(--concorde-spacing) * 2);
+  font-weight: 600;
+}
+
+.closeButtonContainer {
+  border-radius: calc(var(--concorde-border-radius) / 1.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: calc(var(--concorde-spacing) * 2);
+
+  &:hover {
+    cursor: pointer;
+    background-color: var(--concorde-chip-close-background-color, #dddddd);
+  }
+}
+
+.closeIcon {
+  cursor: pointer;
+}

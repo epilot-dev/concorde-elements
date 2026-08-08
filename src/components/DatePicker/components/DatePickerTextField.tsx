@@ -1,0 +1,226 @@
+import classNames from 'classnames'
+import { isValid } from 'date-fns'
+import { forwardRef, useEffect, useRef, useState } from 'react'
+
+import type { PatternInputProps } from '../../'
+import { PatternInput, IconButton } from '../../'
+import srClasses from '../../../accessibility.module.scss'
+import {
+  formatDateToDigits,
+  generateDateMask,
+  isValidDateLength,
+  isValidDatePatternString,
+  parseDatePatternString,
+  useDatepickerTranslations
+} from '../utils'
+
+import classes from './DatePickerTextField.module.scss'
+import type { DatePickerTextFieldProps } from './types'
+
+export const DatePickerTextField = forwardRef<
+  HTMLInputElement,
+  DatePickerTextFieldProps
+>((props, ref) => {
+  const {
+    toggleCalendar,
+    inputId: id,
+    locale,
+    hasTime,
+    readOnly,
+    isDisabled,
+    label,
+    onDateChange,
+    onValidityChange,
+    value,
+    defaultValue,
+    isRequired,
+    helperText: helperTextProp,
+    isError,
+    ...rest
+  } = props
+
+  const {
+    TEXT_FIELD_DATE_HELPER_TEXT,
+    TEXT_FIELD_TIME_HELPER_TEXT,
+    TEXT_FIELD_NUMBERS_HELPER_TEXT,
+    OPEN_DATEPICKER
+  } = useDatepickerTranslations()
+
+  // Sync the accessible input with the non-accessible input
+  const [rawDigits, setRawDigits] = useState<string>(
+    value ? formatDateToDigits(value as string) : ''
+  )
+
+  const [isAccessibleFocused, setIsAccessibleFocused] = useState(false)
+
+  // Track whether the latest value change originated from user input
+  // to prevent the parent round-trip from overwriting in-progress edits
+  const isUserInputRef = useRef(false)
+
+  const mask = generateDateMask(locale, hasTime)
+
+  function getHelperText(hasTime?: boolean) {
+    return `${helperTextProp ? `${helperTextProp}. ` : ''}${TEXT_FIELD_DATE_HELPER_TEXT} ${
+      hasTime ? TEXT_FIELD_TIME_HELPER_TEXT : ''
+    }. ${TEXT_FIELD_NUMBERS_HELPER_TEXT}`
+  }
+
+  const hasValue = Boolean(value)
+
+  // Sets valid date on Datepicker input
+  const handleChange: PatternInputProps['onChange'] = (values, source) => {
+    if (source.source === 'prop') {
+      return
+    }
+    setRawDigits(values.value)
+    const datestring = values.value
+
+    // If the date is empty, set the date to null
+    if (datestring.length === 0) {
+      isUserInputRef.current = true
+      onValidityChange?.(true)
+      onDateChange(null)
+
+      return
+    }
+
+    const isValidLength = isValidDateLength(datestring, hasTime)
+
+    // If the length of the date is not valid, the user is still typing. Don't
+    // emit a validity change yet so we don't flag a half-typed date as invalid.
+    if (!isValidLength) {
+      return
+    }
+
+    const isValidDatePattern = isValidDatePatternString(datestring)
+
+    // If the typed date is malformed, reset the stored value to null and flag it
+    // as invalid instead of silently resetting to today. The typed text is kept
+    // visible so the user can correct it, and the form can surface an error and
+    // block navigation rather than accepting a wrong date.
+    if (!isValidDatePattern) {
+      isUserInputRef.current = true
+      onValidityChange?.(false)
+      onDateChange(null)
+
+      return
+    }
+
+    const validDate = parseDatePatternString(datestring)
+
+    // Set date only if valid date
+    if (validDate && isValid(validDate)) {
+      isUserInputRef.current = true
+      onValidityChange?.(true)
+      onDateChange(validDate)
+    } else {
+      // Complete length and pattern but not a real date (e.g. 30.02.) — reset to
+      // null and flag invalid, keeping the input so the user can correct it.
+      isUserInputRef.current = true
+      onValidityChange?.(false)
+      onDateChange(null)
+    }
+  }
+
+  // Set the raw digits when the value changes from an external source (e.g. calendar)
+  // Skip when the change originated from user input to avoid overwriting in-progress edits
+  useEffect(() => {
+    if (isUserInputRef.current) {
+      isUserInputRef.current = false
+
+      return
+    }
+
+    setRawDigits(value ? formatDateToDigits(value as string) : '')
+  }, [value])
+
+  const helperText = getHelperText(hasTime)
+
+  return (
+    <>
+      <p className={srClasses['sr-only']} id={`${id}-helpertext`}>
+        {helperText}
+      </p>
+      {/* Accessible input */}
+      <PatternInput
+        aria-describedby={`${id}-helpertext`}
+        aria-label={rest['aria-label']}
+        containerProps={{
+          className: classes['container-accessible']
+        }}
+        defaultValue={defaultValue as PatternInputProps['value']}
+        format={mask}
+        id={id && `${id}--text-field-accessible`}
+        inputMode="numeric"
+        isDisabled={isDisabled}
+        isError={isError}
+        label={label}
+        mask=""
+        onBlur={() => setIsAccessibleFocused(false)}
+        onChange={handleChange}
+        onFocus={() => setIsAccessibleFocused(true)}
+        patternChar="9"
+        placeholder={helperText}
+        readOnly={readOnly}
+        required={isRequired}
+        value={rawDigits}
+      />
+      {/* Non-accessible input */}
+      <PatternInput
+        {...rest}
+        aria-describedby={`${id}-helpertext`}
+        aria-hidden={true}
+        containerProps={{
+          className: classNames(
+            'Concorde-DatePicker--TextField',
+            classes.container
+          )
+        }}
+        defaultValue={defaultValue as PatternInputProps['value']}
+        endAdornment={
+          <IconButton
+            aria-label={OPEN_DATEPICKER}
+            hoverColor="var(--concorde-primary-color)"
+            id={id && `${id}--open-button`}
+            name="calendar_month"
+            onClick={() => {
+              // Clear the "user typing" guard so a subsequent calendar
+              // selection always syncs back into the text input, even after a
+              // rejected (invalid) entry left the stored value unchanged.
+              isUserInputRef.current = false
+              toggleCalendar()
+            }}
+          />
+        }
+        format={mask}
+        helperText={helperTextProp}
+        id={id && `${id}--text-field`}
+        inputMode="numeric"
+        isDisabled={isDisabled}
+        isError={isError}
+        isRequired={isRequired}
+        isTriggered={isAccessibleFocused}
+        isTriggerInput
+        label={label}
+        onChange={handleChange}
+        onKeyDown={(event) => {
+          // Do nothing on Enter
+          if (event.key === 'Enter') {
+            event.preventDefault()
+            event.stopPropagation()
+
+            return
+          }
+        }}
+        patternChar="9"
+        placeholder={!hasValue ? mask.replace(/\d/g, '_') : undefined}
+        readOnly={readOnly}
+        ref={ref}
+        tabIndex={-1}
+        value={rawDigits as PatternInputProps['value']}
+      />
+    </>
+  )
+})
+
+DatePickerTextField.displayName = 'DatePickerTextField'

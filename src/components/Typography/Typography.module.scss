@@ -1,0 +1,61 @@
+.root {
+  font-family: var(--concorde-font-family);
+  margin: 0;
+}
+
+.h1 {
+  font-size: var(--concorde-text-3xl);
+}
+
+.h2 {
+  font-size: var(--concorde-text-2xl);
+}
+
+.h3 {
+  font-size: var(--concorde-text-xl);
+}
+
+.h4 {
+  font-size: var(--concorde-text-lg);
+}
+
+.h5 {
+  font-size: var(--concorde-text-base);
+}
+
+.h6 {
+  font-size: var(--concorde-text-sm);
+}
+
+.p,
+.div,
+.legend {
+  font-size: var(--concorde-text-base);
+  margin: 0;
+}
+
+.span,
+.dt,
+.dd {
+  font-size: var(--concorde-text-base);
+}
+
+.dt {
+  font-weight: 600
+}
+
+.primary {
+  color: var(--concorde-primary-text);
+}
+
+.secondary {
+  color: var(--concorde-secondary-text);
+}
+
+.error {
+  color: var(--concorde-error-color);
+}
+
+.disabled {
+  color: var(--concorde-disabled-text);
+}
