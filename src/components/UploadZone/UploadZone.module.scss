@@ -1,0 +1,79 @@
+@use '../../breakpoints' as breakpoints;
+
+/* Root styles */
+.root {
+  --dropzone-accepted-color: var(--concorde-dropzone-accepted-color);
+  --dropzone-rejected-color: var(
+    --concorde-dropzone-rejected-color,
+    var(--concorde-error-color)
+  );
+  --default-dropzone-active-background-color: rgba(
+    var(--concorde-primary-color-rgb),
+    0.18
+  );
+  --dropzone-active-background-color: var(
+    --concorde-dropzone-active-background-color,
+    var(--default-dropzone-active-background-color)
+  );
+
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  cursor: pointer;
+  border: 1px dashed var(--concorde-outline);
+  border-radius: min(var(--concorde-border-radius), 1.25rem);
+
+  &:not(.disabled):hover {
+    background: var(--dropzone-active-background-color);
+  }
+}
+
+/* States */
+.accepted {
+  border-color: var(--concorde-primary-color);
+  background-color: var(--dropzone-accepted-color);
+}
+
+.rejected {
+  border-color: var(--concorde-error-color);
+  background-color: var(--dropzone-rejected-color);
+}
+
+.focused {
+  background: var(--dropzone-active-background-color);
+}
+
+.dragActive {
+  background: var(--dropzone-active-background-color);
+}
+
+/* Error */
+.error {
+  border-color: var(--concorde-error-color);
+}
+
+/* Disabled */
+.disabled {
+  opacity: var(--concorde-disabled-opacity);
+  cursor: default;
+}
+
+/* Upload Message */
+.uploadMessage {
+  padding: calc(var(--concorde-spacing) * 6);
+}
+
+.message {
+  line-height: 1.6;
+
+  @media (max-width: breakpoints.$concorde-breakpoint-sm) {
+    display: none;
+  }
+}
+
+.uploadButton {
+  letter-spacing: normal;
+  color: var(--concorde-primary-color);
+}
