@@ -1,0 +1,44 @@
+.contentContainer {
+  margin-bottom: calc(var(--concorde-spacing) * 3);
+}
+
+.noTitleSubtitle {
+  margin-bottom: 0;
+}
+
+.title {
+  font-weight: 600;
+  line-height: initial;
+  color: var(--concorde-accent-color, var(--concorde-primary-color));
+}
+
+.subtitle {
+  margin-top: calc(var(--concorde-spacing) * 2);
+}
+
+.required {
+  &:has(.title) {
+    .title::after {
+      content: '*' / 'required.';
+      font-size: 1rem;
+      margin-left: 4px;
+    }
+  }
+
+  &:has(.subtitle):not(:has(.title)) {
+    .subtitle::after {
+      content: '*' / 'required.';
+      font-size: 1rem;
+      margin-left: 4px;
+    }
+  }
+
+  &:not(:has(.title), :has(.subtitle)) {
+    .required::after {
+      content: '*' / 'required.';
+      font-size: 1rem;
+      position: absolute;
+      right: -16px;
+    }
+  }
+}

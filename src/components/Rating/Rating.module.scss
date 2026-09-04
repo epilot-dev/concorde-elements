@@ -1,0 +1,37 @@
+/* Root Styles */
+.root {
+  --rating-unchecked-color: var(
+    --concorde-rating-unchecked-color,
+    var(--concorde-outline)
+  );
+  --rating-checked-color: var(
+    --concorde-rating-checked-color,
+    var(--concorde-primary-color)
+  );
+
+  cursor: pointer;
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  position: relative;
+  gap: calc(var(--concorde-spacing) * 4);
+  text-align: left;
+}
+
+/* Rating Icon Styles */
+.ratingIcon {
+  color: var(--rating-unchecked-color);
+  transition: color 0.2s ease-in-out;
+
+  &:hover {
+    color: var(--rating-checked-color);
+  }
+}
+
+.ratingIconSelected {
+  color: var(--rating-checked-color);
+
+  &:hover {
+    color: var(--rating-checked-color);
+  }
+}
