@@ -1,0 +1,24 @@
+.root {
+  --spacing: calc(var(--concorde-spacing-scale) * var(--concorde-spacing));
+  --align-items: var(--concorde-spacing-align-items);
+  --justify-content: var(--concorde-spacing-justify-content);
+
+  display: flex;
+  align-items: var(--align-items);
+  gap: var(--spacing);
+}
+
+.variant-inline {
+  flex-wrap: wrap;
+  justify-content: var(--justify-content, var(--align-items));
+  row-gap: var(--concorde-spacing);
+}
+
+.variant-inset {
+  display: block;
+  padding: var(--spacing);
+}
+
+.variant-stack {
+  flex-direction: column;
+}

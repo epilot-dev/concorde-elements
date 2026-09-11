@@ -1,0 +1,17 @@
+.root {
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Icon buttons should not be resized by the --concorde-button-height design token */
+  min-height: auto;
+
+  > span {
+    display: flex;
+  }
+}
+
+.noButtonVariant {
+  background-color: transparent;
+  color: currentColor;
+}

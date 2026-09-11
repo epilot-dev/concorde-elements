@@ -1,0 +1,99 @@
+/* Root Styles */
+.root {
+  margin: 0;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+}
+
+/* Image List Styles */
+.image-list {
+  position: relative;
+  height: 100%;
+}
+
+/* Images Container Styles */
+.image-container {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+
+  > div {
+    display: flex;
+  }
+}
+
+/* Image Stepper Image Styles */
+.image {
+  height: auto;
+  width: 100%;
+  object-fit: cover;
+  aspect-ratio: 3/2;
+}
+
+.image-list {
+  /* Same border radius as the image container */
+  border-radius: min(var(--concorde-border-radius), 1.25rem);
+}
+
+/* Button Styles */
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  padding: 0 calc(var(--concorde-spacing) * 2) !important;
+  border: none;
+  border-radius: 0;
+  background-color: transparent;
+  background-image: linear-gradient(
+    var(--image-stepper-direction),
+    transparent,
+    rgba(var(--concorde-default-background-rgb), 0.5)
+  );
+  transition: background-position-x 0.25s ease-in-out;
+  background-size: 200% 100%;
+  background-repeat: no-repeat;
+  background-position-x: var(--image-stepper-position);
+
+  > span {
+    > span {
+      color: var(--concorde-default-background);
+      &:hover {
+        color: var(--concorde-default-background);
+      }
+      background-color: var(--concorde-primary-color);
+      border-radius: 100%;
+      box-shadow: var(--concorde-image-stepper-button-shadow);
+      padding: 0.125rem;
+    }
+  }
+}
+
+.back-button {
+  left: 0;
+  right: auto;
+  --image-stepper-direction: to left;
+  --image-stepper-position: 200%;
+  &:hover {
+    --image-stepper-position: 100%;
+  }
+}
+
+.next-button {
+  left: auto;
+  right: 0;
+  --image-stepper-direction: to right;
+  --image-stepper-position: -100%;
+  &:hover {
+    --image-stepper-position: 0%;
+  }
+}
+
+/* Mobile Stepper Styles */
+.mobile-stepper {
+  background-color: inherit;
+}

@@ -1,0 +1,37 @@
+/* Root Stypes */
+.root {
+  cursor: pointer;
+  text-overflow: ellipsis;
+  max-width: calc(
+    var(--concorde-dropdown-input-width, 100%) - var(
+        --concorde-dropdown-input-adornment-width,
+        auto
+      ) - calc(
+        var(--concorde-spacing) * 7 *
+          var(--concorde-dropdown-input-spacing-multiplier, 1)
+      )
+  );
+}
+
+/* Disabled Stypes */
+.disabled {
+  cursor: default;
+}
+
+/* Readonly Styles */
+.readonly {
+  cursor: default;
+  user-select: none;
+  opacity: 1;
+}
+
+.readonlyIcon {
+  opacity: 0.5;
+}
+
+/* End Adornment Styles */
+.endAdornment {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

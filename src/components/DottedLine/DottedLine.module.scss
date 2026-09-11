@@ -1,0 +1,15 @@
+.root {
+  --dotted-line-color: var(
+    --concorde-dotted-line-custom-color,
+    inherit
+  );
+
+  display: inline-flex;
+  border-style: dotted;
+  border-color: var(--dotted-line-color);
+  border-width: 0;
+  border-bottom-width: 1px;
+  flex: 1;
+  height: 16px;
+  margin: -1px calc(var(--concorde-spacing) * 2) 0;
+}
