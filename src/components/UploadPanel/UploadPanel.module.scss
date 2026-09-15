@@ -1,0 +1,10 @@
+.container {
+  padding-top: calc(var(--concorde-spacing) * 3);
+  padding-bottom: calc(var(--concorde-spacing) * 3);
+}
+
+/* Error styles */
+.helperText {
+  font-size: var(--concorde-text-xs);
+  margin-top: var(--concorde-spacing);
+}
