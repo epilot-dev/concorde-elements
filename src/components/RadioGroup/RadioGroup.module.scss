@@ -1,0 +1,40 @@
+/* Root Styles */
+.root {
+  --radio-group-scale: var(--concorde-radio-group-scale);
+
+  display: inline-flex;
+  align-items: center;
+  gap: calc(var(--concorde-spacing) * var(--radio-group-scale));
+  flex-wrap: wrap;
+}
+
+/* Orientation Styles */
+.orientation-horizontal {
+  flex-direction: row;
+}
+
+.orientation-vertical {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.errorText {
+  margin-top: calc(var(--concorde-spacing));
+  font-size: 12px;
+}
+
+.error {
+  color: var(--concorde-error-color);
+}
+
+.container {
+  display: flex;
+  position: relative;
+}
+
+.asterisk {
+  position: absolute;
+  top: 0;
+  right: -10px;
+  color: var(--concorde-primary-text)
+}
