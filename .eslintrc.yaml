@@ -1,0 +1,37 @@
+---
+parser: "@typescript-eslint/parser"
+extends:
+  - "@epilot/eslint-config-react"
+  - "plugin:@typescript-eslint/recommended"
+  - "plugin:prettier/recommended"
+  - "plugin:storybook/recommended"
+  - "prettier"
+  - "plugin:oxlint/recommended"
+env:
+  jest: true
+settings:
+  import/resolver:
+    node:
+      extensions:
+        - ".js"
+        - ".jsx"
+        - ".ts"
+        - ".tsx"
+      paths:
+        - src
+    typescript: true
+parserOptions:
+  ecmaVersion: 2020
+  sourceType: module
+  ecmaFeatures:
+    jsx: true
+ignorePatterns:
+  - "/node_modules/*"
+  - "/dist/*"
+  - "**/*.module.scss.d.ts"
+rules:
+  "no-console": "error"
+  "@typescript-eslint/consistent-type-imports": "error"
+  "@typescript-eslint/ban-types": "off"
+  "prettier/prettier": "error"
+  "@typescript-eslint/no-unused-vars-experimental": "off" 

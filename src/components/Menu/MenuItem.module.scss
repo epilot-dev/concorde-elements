@@ -1,0 +1,101 @@
+/* Root Styles */
+.root {
+  --hover-bg-default: rgba(var(--concorde-primary-text-rgb), 0.12);
+  --active-bg-default: rgba(var(--concorde-primary-text-rgb), 0.18);
+
+  --hover-color: var(
+    --concorde-menu-item-hover-color,
+    var(--concorde-primary-text)
+  );
+  --selected-color: var(
+    --concorde-menu-item-selected-color,
+    var(--hover-color)
+  );
+
+  --hover-bg-color: var(
+    --concorde-menu-item-hover-bg-color,
+    var(--hover-bg-default)
+  );
+  --active-bg-color: var(
+    --concorde-menu-item-hover-bg-color,
+    var(--active-bg-default)
+  );
+  --selected-bg-color: var(
+    --concorde-menu-item-selected-bg-color,
+    var(--hover-bg-color)
+  );
+
+  width: 100%;
+  display: flex;
+  position: relative;
+  box-sizing: border-box;
+  text-align: left;
+  align-items: flex-start;
+  padding: calc(var(--concorde-spacing) * 3);
+  font-size: var(--concorde-text-base);
+  justify-content: flex-start;
+  text-decoration: none;
+  font-weight: 400;
+  background: transparent;
+  gap: calc(var(--concorde-spacing) * 3);
+  color: var(--concorde-primary-text);
+  border-radius: 0;
+}
+
+.menu-item-clickable {
+  cursor: pointer;
+
+  &:hover,
+  &:focus-visible {
+    color: var(--hover-color);
+    background-color: var(--hover-bg-color);
+  }
+
+  &:active {
+    color: var(--hover-color);
+    background-color: var(--active-bg-color);
+  }
+}
+
+.menu-item-selected {
+  color: var(--selected-color);
+  background-color: var(--selected-bg-color);
+
+  &:hover,
+  &:active {
+    color: var(--selected-color, var(--hover-color));
+  }
+
+  &:hover,
+  &:focus-visible {
+    background-color: var(--selected-bg-color);
+  }
+
+  &:active {
+    background-color: var(--selected-bg-color, var(--active-bg-color));
+  }
+}
+
+.menu-item-disabled {
+  cursor: auto;
+  color: inherit;
+  background-color: initial;
+  opacity: var(--concorde-disabled-opacity);
+}
+
+/* Menu Item Content Styles */
+.menu-item-content {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+/* Menu Item Adornment Styles */
+.menu-item-adornment {
+  flex-shrink: 0;
+  display: flex;
+  visibility: hidden;
+}
+
+.menu-item-adornment-visible {
+  visibility: visible;
+}

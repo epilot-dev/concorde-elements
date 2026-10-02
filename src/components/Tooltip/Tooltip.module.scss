@@ -1,0 +1,28 @@
+/* Tooltip Content styles */
+.content {
+  background-color: var(--concorde-primary-color);
+  color: white;
+  padding: calc(var(--concorde-spacing) * 2);
+  font-family: var(--concorde-font-family);
+  border-radius: min(var(--concorde-border-radius), 8px);
+  z-index: 10;
+  max-width: min(360px, var(--radix-popper-available-width));
+  overflow-wrap: break-word;
+  box-shadow: var(--concorde-card-shadow);
+}
+
+/* Tooltip arrow styles */
+.arrow {
+  fill: var(--concorde-primary-color);
+}
+
+/*
+ * Radix positions tooltip content with `position: fixed`. Embedded journeys
+ * make their shadow host a container-query root, which also establishes a
+ * containing block for fixed descendants. Give a locally portalled tooltip a
+ * nearer containing block so Floating UI calculates and renders in the same
+ * coordinate space instead of subtracting the web component's page offset.
+ */
+.local {
+  transform: translate3d(0, 0, 0);
+}

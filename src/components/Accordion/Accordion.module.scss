@@ -1,0 +1,116 @@
+.accordion {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.root {
+  border-block-end: 1px solid var(--concorde-outline, #d8dce2);
+  position: relative;
+}
+
+.root:last-child {
+  border-block-end: none;
+}
+
+/* Red left bar marking an invalid instance. */
+.error::before {
+  content: '';
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: 0;
+  width: 3px;
+  background: var(--concorde-error-color, #e5484d);
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  gap: calc(var(--concorde-spacing) * 2);
+  inline-size: 100%;
+  /* Opt-in header tint: transparent by default (generic accordion); a consumer
+     sets this token to distinguish the header bar from the body content. */
+  background: var(--concorde-accordion-header-background-color, transparent);
+  transition: background-color 0.18s ease;
+}
+
+.toggle {
+  display: flex;
+  align-items: flex-start;
+  gap: calc(var(--concorde-spacing) * 2);
+  flex: 1 1 auto;
+  min-inline-size: 0;
+  padding-top: calc(var(--concorde-spacing) * 2);
+  padding-bottom: calc(var(--concorde-spacing) * 2);
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: start;
+  color: inherit;
+  font: inherit;
+}
+
+.chevron {
+  flex: none;
+  margin-block-start: 2px;
+}
+
+.headerContent {
+  flex: 1 1 auto;
+  min-inline-size: 0;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  /* Center the actions vertically against the full header height while the
+     toggle (chevron + preview) stays top-aligned for multi-line previews. */
+  align-self: center;
+  gap: var(--concorde-spacing);
+  flex: none;
+  padding-inline-end: calc(var(--concorde-spacing) * 2);
+}
+
+/* Height-animated collapsible region. grid-template-rows 0fr->1fr animates the
+   body between collapsed and expanded while the body stays mounted. */
+.region {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.25s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.regionExpanded {
+  grid-template-rows: 1fr;
+  padding-top: calc(var(--concorde-spacing) * 3);
+  padding-bottom: calc(var(--concorde-spacing) * 3);
+}
+
+.regionCollapsed {
+  grid-template-rows: 0fr;
+}
+
+/* The clipping element must carry NO padding: overflow:hidden clips at the
+   padding box, so padding-block-end here would leave an unclipped band at the
+   bottom edge where collapsed content shows through. Padding lives on .bodyInner. */
+.body {
+  overflow: hidden;
+  min-block-size: 0;
+}
+
+/* Once fully expanded, stop clipping so descendant popovers (date-picker
+   calendar, dropdowns, tooltips) can overflow the body. Clipping stays on while
+   collapsed/animating (.body) so the collapse hides content correctly. */
+.bodyExpanded {
+  overflow: visible;
+}
+
+.bodyInner {
+  padding-block-end: calc(var(--concorde-spacing) * 4);
+  padding-inline-start: calc(var(--concorde-spacing) * 8);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .region {
+    transition: none;
+  }
+}
