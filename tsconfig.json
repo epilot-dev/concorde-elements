@@ -1,0 +1,35 @@
+{
+  "extends": "../tsconfig.settings.json",
+  "compilerOptions": {
+    "composite": true,
+    "incremental": true,
+    "target": "ES6",
+    "jsx": "react-jsx",
+    "esModuleInterop": true,
+    "baseUrl": "./",
+    "downlevelIteration": true,
+    "noEmit": false,
+    "module": "ESNext",
+    "forceConsistentCasingInFileNames": true,
+    "paths": {
+      "@": [
+        "./"
+      ],
+      "*": [
+        "src/*",
+        "node_modules/*"
+      ]
+    },
+    "rootDir": "./src",
+    "outDir": "./dist",
+  },
+  "include": [
+    "src",
+    "types",
+    "src/stories",
+    "./styles.d.ts"
+  ],
+  "exclude": [
+    "src/**/stories"
+  ]
+}

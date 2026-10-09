@@ -1,0 +1,133 @@
+/* Root Styles, sharing the Input tokens so both theme the same way */
+.root {
+  --color: var(--concorde-input-color, var(--concorde-primary-text));
+  --border-color: var(--concorde-input-border-color, var(--concorde-outline));
+  --error-color: var(--concorde-input-error-color, var(--concorde-error-color));
+  --background-color: var(--concorde-input-background-color, transparent);
+  --focused-color: var(--concorde-primary-color);
+  --label-color: var(
+    --concorde-input-label-color,
+    var(--concorde-secondary-text)
+  );
+  --border-radius: var(
+    --concorde-input-border-radius,
+    min(var(--concorde-border-radius), 20px)
+  );
+  --box-height: var(--concorde-input-height, 48px);
+  --box-max-width: var(--concorde-otp-input-box-max-width, 56px);
+  --gap: var(--concorde-otp-input-gap, calc(var(--concorde-spacing) * 2));
+
+  font-family: var(--concorde-font-family);
+  font-size: var(--concorde-text-base);
+  font-weight: 400;
+  line-height: 1.1876em;
+  color: var(--color);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Label Styles */
+.label {
+  display: block;
+  max-width: 100%;
+  margin-bottom: calc(var(--concorde-spacing) * 2);
+  font-size: var(--concorde-text-base);
+  line-height: 1.25;
+  color: var(--label-color);
+  overflow-wrap: anywhere;
+}
+
+.root:focus-within .label {
+  color: var(--focused-color);
+}
+
+.root .label.label-error {
+  color: var(--error-color);
+}
+
+/* Group Styles */
+.group {
+  display: flex;
+  gap: var(--gap);
+  width: 100%;
+}
+
+/* Box Styles */
+.box {
+  flex: 1 1 0;
+  min-width: 0;
+  max-width: var(--box-max-width);
+  height: var(--box-height);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--concorde-font-family);
+  font-size: var(--concorde-text-lg);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+  color: var(--color);
+  caret-color: var(--focused-color);
+  background-color: var(--background-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    border-color 200ms cubic-bezier(0, 0, 0.2, 1) 0ms,
+    box-shadow 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+
+  /* Inset shadow draws the 2px focus ring without shifting the character */
+  &:focus {
+    border-color: var(--focused-color);
+    box-shadow: inset 0 0 0 1px var(--focused-color);
+  }
+
+  &:disabled {
+    cursor: default;
+    color: var(--color);
+  }
+}
+
+.box-error {
+  border-color: var(--error-color);
+
+  &:not(:focus) {
+    color: var(--error-color);
+  }
+}
+
+/* Underlined Variant Styles */
+.box-underlined {
+  border-width: 0 0 1px;
+  border-radius: 0;
+
+  &:focus {
+    box-shadow: inset 0 -1px 0 0 var(--focused-color);
+  }
+}
+
+/* Helper Text Styles */
+.helper-text {
+  margin: 0;
+  margin-top: var(--concorde-spacing);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 160%;
+  text-align: left;
+  color: var(--concorde-secondary-text, #43474e);
+  width: 100%;
+  text-wrap: auto;
+}
+
+/* Generic Disabled State Styles */
+.disabled {
+  opacity: var(--concorde-disabled-opacity);
+}
+
+/* Generic Error State Styles */
+.error {
+  color: var(--error-color);
+}
