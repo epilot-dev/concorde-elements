@@ -1,0 +1,52 @@
+.container {
+  --animation-speed: var(--concorde-circular-progress-speed, 0.8s);
+  --size: var(--concorde-circular-progress-size, 40px);
+
+  display: inline-block;
+  position: relative;
+  width: var(--size);
+  height: var(--size);
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.svg {
+  animation: rotate var(--animation-speed) linear infinite; 
+}
+
+.circle {
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.35s;
+}
+
+.circleBg {
+  stroke: var(--concorde-loading-background);
+}
+
+/* Variants */
+.variant-primary {
+  &.circleBg {
+    stroke: var(--concorde-primary-color);
+  }
+
+  &.circle {
+    stroke: currentColor;
+  } 
+}
+
+.variant-secondary {
+  &.circleBg {
+    stroke: var(--concorde-secondary-color);
+  }
+
+  &.circle {
+    stroke: currentColor;
+  } 
+}

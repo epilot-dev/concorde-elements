@@ -1,0 +1,114 @@
+/* Root Styles */
+.root {
+  --checkbox-label-color: var(--concorde-checkbox-label-color,
+      var(--concorde-primary-text));
+  --checkbox-unchecked-color: var(--concorde-checkbox-unchecked-color,
+      var(--concorde-outline));
+  --checkbox-error-color: var(--concorde-checkbox-error-color,
+      var(--concorde-error-color));
+
+  font-family: var(--concorde-font-family);
+  display: inline-flex;
+  font-size: var(--concorde-text-base);
+  align-items: center;
+  cursor: pointer;
+  gap: calc(var(--concorde-spacing) * 2);
+  color: var(--checkbox-label-color);
+  max-width: 98%;
+
+  // Active state styles
+  &:not(.disabled) {
+    .checkboxLabel {
+      cursor: pointer;
+    }
+
+    &:hover .checkboxIcon {
+      color: var(--concorde-primary-color);
+    }
+  }
+}
+
+.checkboxRoot {
+  all: unset;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:focus-visible {
+    outline: 2px auto var(--concorde-primary-color);
+  }
+}
+
+/* Checbkox Icon Styles */
+.checkboxIcon {
+  color: var(--checkbox-unchecked-color);
+
+  &:hover {
+    color: var(--checkbox-unchecked-color);
+  }
+}
+
+.checkboxIconChecked {
+  color: var(--concorde-primary-color);
+
+  &:hover {
+    color: var(--concorde-primary-color);
+  }
+}
+
+/* Checkbox Label Styles */
+.checkboxLabel {
+  color: var(--checkbox-label-color);
+  display: flex;
+  position: relative;
+}
+
+/* Align the control with the first label line when a description is shown */
+.hasDescription {
+  align-items: flex-start;
+}
+
+/* Checkbox Content Styles (label + description column) */
+.checkboxContent {
+  display: flex;
+  flex-direction: column;
+  /* shrink-to-fit so a centering label (e.g. IconLabel) stays left-aligned */
+  align-items: flex-start;
+  gap: calc(var(--concorde-spacing) / 2);
+}
+
+/* Checkbox Description Styles */
+.checkboxDescription {
+  color: var(--concorde-secondary-text);
+  font-size: var(--concorde-text-sm);
+  white-space: pre-line;
+}
+
+/* Position Styles */
+.position-start {
+  flex-direction: row-reverse;
+}
+
+.position-end {
+  flex-direction: row;
+}
+
+/* Generic Error State Styles */
+.error {
+  color: var(--checkbox-error-color);
+}
+
+/* Disabled State Styles */
+.disabled {
+  cursor: default;
+  opacity: var(--concorde-disabled-opacity);
+
+  .checkboxIconChecked {
+    color: var(--checkbox-unchecked-color);
+  }
+}
+
+.asterisk {
+  position: absolute;
+  right: -10px;
+}
