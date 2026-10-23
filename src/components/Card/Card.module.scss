@@ -1,0 +1,41 @@
+.root {
+  --card-background-color: var(--concorde-card-background-color, var(--concorde-card-default-background));
+  --card-hover-background-color: var(--concorde-card-hover-background-color,
+      var(--card-background-color));
+  --card-shadow: var(--concorde-card-custom-shadow,
+      var(--concorde-card-shadow));
+
+  font-family: var(--concorde-font-family);
+  border-radius: min(var(--concorde-border-radius), 1.25rem);
+  position: relative;
+  padding: calc(var(--concorde-spacing) * 5);
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Shadow variant (default) */
+.variant-shadow {
+  background: var(--card-background-color);
+  box-shadow: var(--card-shadow);
+
+  &:hover {
+    background: var(--card-hover-background-color);
+  }
+}
+
+/* Outlined variant — border instead of shadow */
+.variant-outlined {
+  background: var(--card-background-color);
+  box-shadow: none;
+  border: 1.5px solid var(--concorde-card-border-color, var(--concorde-outline));
+
+  &:hover {
+    background: var(--card-hover-background-color);
+  }
+}
+
+/* Bare variant — no shadow, no border, no background */
+.variant-bare {
+  background: transparent;
+  box-shadow: none;
+  padding: 0;
+}

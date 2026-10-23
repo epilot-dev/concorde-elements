@@ -1,0 +1,58 @@
+@use '../../breakpoints' as breakpoints;
+
+.tabButton {
+  --tab-button-color: var(
+    --concorde-tab-button-color,
+    var(--concorde-primary-color)
+  );
+  --tab-button-hover-bg-color: var(
+    --concorde-tab-button-hover-bg-color,
+    lch(from var(--tab-button-color) l c h / 0.05)
+  );
+  --tab-button-selected-bg-color: var(
+    --concorde-tab-button-selected-bg-color,
+    lch(from var(--tab-button-color) l c h / 0.18)
+  );
+
+  cursor: pointer;
+  border-radius: var(--concorde-border-radius);
+  border: 0;
+  appearance: none;
+  padding: calc(var(--concorde-spacing) * 2) calc(var(--concorde-spacing) * 4);
+  line-height: 1.6;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: calc(var(--concorde-spacing) * 2);
+  background: transparent;
+  min-width: calc(var(--concorde-spacing) * 32);
+  overflow-y: hidden;
+  -webkit-tap-highlight-color: transparent;
+  color: var(--concorde-primary-text);
+  font-family: var(--concorde-font-family);
+  font-size: var(--concorde-text-base);
+  font-weight: 700;
+
+  &:hover {
+    color: var(--tab-button-color);
+    background-color: var(--tab-button-hover-bg-color);
+  }
+
+  &.tabButtonSelected {
+    font-weight: 700;
+    color: var(--tab-button-color);
+    background-color: var(--tab-button-selected-bg-color);
+  }
+
+  /* Tab button label */
+  .tabLabel {
+    line-height: 1.25;
+    text-overflow: ellipsis;
+    line-clamp: 2;
+  }
+
+  /* Tab button icon */
+  .tabButtonIcon {
+    margin: 0;
+  }
+}

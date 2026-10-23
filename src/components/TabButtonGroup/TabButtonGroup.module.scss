@@ -1,0 +1,17 @@
+@use '../../breakpoints' as breakpoints;
+
+:root {
+  font-family: var(--concorde-font-family);
+}
+
+/* Tab button group */
+.tabButtonGroup {
+  display: flex;
+  flex-direction: column;
+  padding: calc(var(--concorde-spacing) * 4);
+  @media (min-width: breakpoints.$concorde-breakpoint-sm) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: calc(var(--concorde-spacing) * 2);
+  }
+}
