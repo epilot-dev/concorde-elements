@@ -1,0 +1,45 @@
+/* Root Styles */
+.root {
+  position: relative;
+
+  &.verticalSpaceInsufficient {
+    margin-bottom: 200px;
+  }
+}
+
+/* Popup Styles */
+.popup {
+  width: 100%;
+  z-index: 999999;
+}
+
+/* Menu Styles */
+.menuRoot {
+  max-height: 280px;
+  overflow-y: auto;
+  padding-left: 0;
+
+  // Manage hover state of Autocomplete options when navigating with keyboard
+  :global {
+    .Concorde-Autocomplete__Option-focusVisible {
+      color: var(--hover-color);
+      background-color: var(--hover-bg-color);
+      outline: 2px auto var(--concorde-primary-color);
+      outline-offset: 0.25rem;
+    }
+  }
+}
+
+.menuFullWidth {
+  width: 100%;
+}
+
+.menuEmpty {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* Loader Styles */
+.loader {
+  display: flex;
+}

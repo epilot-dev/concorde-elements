@@ -1,0 +1,9 @@
+.docs-story :not(.sb-story *) {
+  transform: none;
+  overflow: visible;
+}
+
+div.sbdocs,
+div.docs-story {
+  overflow: visible;
+}

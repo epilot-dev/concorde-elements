@@ -1,0 +1,27 @@
+.fileUploadStatus {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  gap: var(--concorde-spacing);
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+.row {
+  padding: calc(var(--concorde-spacing) * 4) 0;
+}
+
+.title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.fileInfo {
+  flex-grow: 1;
+  max-width: calc(100% - 48px);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
