@@ -1,0 +1,131 @@
+/* Root Styles */
+.root {
+  --rail-color: var(--concorde-slider-rail-color, var(--concorde-outline));
+  --track-color: var(
+    --concorde-slider-track-color,
+    var(--concorde-primary-color)
+  );
+  --thumb-color: var(
+    --concorde-slider-thumb-color,
+    var(--concorde-primary-color)
+  );
+  --rail-height: var(--concorde-slider-rail-height, 8px);
+  --thumb-size: var(--concorde-slider-thumb-size, 24px);
+  --thumb-ring: var(--concorde-default-background, #ffffff);
+  --rail-radius: min(var(--concorde-border-radius), 9999px);
+  --fill: 0%;
+
+  font-family: var(--concorde-font-family);
+  color: var(--concorde-primary-text);
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--concorde-spacing) * 2);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.root--error {
+  --track-color: var(--concorde-error-color);
+  --thumb-color: var(--concorde-error-color);
+}
+
+.root--disabled {
+  --track-color: var(--concorde-disabled-color);
+  --thumb-color: var(--concorde-disabled-color);
+
+  .input {
+    cursor: not-allowed;
+  }
+}
+
+.root--readOnly .input {
+  pointer-events: none;
+}
+
+/* The filled portion runs from the rail start to the thumb. */
+@mixin rail {
+  height: var(--rail-height);
+  border-radius: var(--rail-radius);
+  background: linear-gradient(
+    to right,
+    var(--track-color) 0%,
+    var(--track-color) var(--fill),
+    var(--rail-color) var(--fill),
+    var(--rail-color) 100%
+  );
+}
+
+@mixin thumb {
+  width: var(--thumb-size);
+  height: var(--thumb-size);
+  border-radius: 50%;
+  border: 2px solid var(--thumb-ring);
+  background: var(--thumb-color);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: box-shadow var(--concorde-transition-effect, 0.2s ease-in-out);
+}
+
+/* Input Styles: the native range keeps keyboard, touch and pointer handling. */
+.input {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  /* Tall enough for a comfortable touch target while the rail stays thin. */
+  min-height: max(var(--thumb-size), 24px);
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+  outline: none;
+
+  &::-webkit-slider-runnable-track {
+    @include rail;
+  }
+
+  &::-moz-range-track {
+    @include rail;
+  }
+
+  &::-webkit-slider-thumb {
+    @include thumb;
+
+    -webkit-appearance: none;
+    /* Centres the thumb on the rail, whose height sets the track box. */
+    margin-top: calc((var(--rail-height) - var(--thumb-size)) / 2);
+  }
+
+  &::-moz-range-thumb {
+    @include thumb;
+  }
+
+  &:focus-visible::-webkit-slider-thumb {
+    outline: 2px auto var(--concorde-primary-color);
+    outline-offset: 2px;
+  }
+
+  &:focus-visible::-moz-range-thumb {
+    outline: 2px auto var(--concorde-primary-color);
+    outline-offset: 2px;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+
+    &::-webkit-slider-thumb,
+    &::-moz-range-thumb {
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+  }
+}
+
+/* Scale Styles */
+.scale {
+  display: flex;
+  justify-content: space-between;
+  gap: calc(var(--concorde-spacing) * 2);
+  font-size: var(--concorde-text-sm);
+  color: var(--concorde-secondary-text);
+}

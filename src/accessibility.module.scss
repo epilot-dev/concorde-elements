@@ -1,0 +1,31 @@
+.sr-only,
+.sr-only-focusable:not(:focus, :focus-within) {
+  border: 0 !important;
+  clip-path: inset(50%) !important; /* 2 */
+  height: 1px !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  width: 1px !important;
+  white-space: nowrap !important; /* 3 */
+}
+
+/*
+	Prevent visually hidden caption from breaking table's collapsing borders
+	@author Louis-Maxime Piton
+	@see https://github.com/twbs/bootstrap/pull/37533
+*/
+.sr-only:not(caption),
+.sr-only-focusable:not(caption):not(:focus, :focus-within) {
+  position: absolute !important;
+}
+
+/*
+	Prevent overflowing children from being focusable.
+	@author Django Janny
+	@see https://github.com/twbs/bootstrap/pull/41286
+*/
+.sr-only *,
+.sr-only-focusable:not(:focus, :focus-within) * {
+  overflow: hidden !important;
+}
