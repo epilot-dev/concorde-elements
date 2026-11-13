@@ -1,0 +1,21 @@
+// Matches the Input helper text (Input.module.scss `.helper-text`), so a
+// HelperText rendered next to a field reads as that field's own helper line.
+.root {
+  margin: 0;
+  margin-top: var(--concorde-spacing);
+  width: 100%;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 160%;
+  text-align: left;
+  text-wrap: auto;
+  color: var(--concorde-secondary-text, #43474e);
+}
+
+.error {
+  color: var(--concorde-input-error-color, var(--concorde-error-color));
+}
+
+.warning {
+  color: var(--concorde-warning-color, #b45309);
+}
