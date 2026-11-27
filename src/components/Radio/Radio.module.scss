@@ -1,0 +1,137 @@
+/* Root Styles */
+.root {
+  --radio-label-color: var(
+    --concorde-radio-label-color,
+    var(--concorde-primary-text)
+  );
+  --radio-unchecked-color: var(
+    --concorde-radio-unchecked-color,
+    var(--concorde-outline)
+  );
+  --radio-error-color: var(
+    --concorde-radio-error-color,
+    var(--concorde-error-color)
+  );
+
+  font-family: var(--concorde-font-family);
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  font-size: var(--concorde-text-base);
+  box-sizing: border-box;
+  vertical-align: middle;
+  gap: calc(var(--concorde-spacing) * 2);
+  color: var(--concorde-primary-text);
+
+  // Active state styles
+  &:not(.disabled) {
+    .radioInput {
+      cursor: pointer;
+    }
+
+    &:hover .radioIcon {
+      color: var(--concorde-primary-color);
+    }
+
+    &:has(.radioInput:focus-visible) {
+      outline: 2px auto var(--concorde-primary-color);
+      outline-offset: 0.25rem;
+    }
+  }
+}
+
+/* Radio Input Styles */
+.radioInput {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  padding: 0;
+  z-index: 1;
+  position: absolute;
+}
+
+/* Radio Label Styles */
+.radioLabel {
+  color: var(--radio-label-color);
+}
+
+/* Align the control with the first label line when a description is shown */
+.hasDescription {
+  align-items: flex-start;
+}
+
+/* Radio Content Styles (label + description column) */
+.radioContent {
+  display: flex;
+  flex-direction: column;
+  /* shrink-to-fit so a centering label (e.g. IconLabel) stays left-aligned */
+  align-items: flex-start;
+  gap: calc(var(--concorde-spacing) / 2);
+}
+
+/* Radio Description Styles */
+.radioDescription {
+  color: var(--concorde-secondary-text);
+  font-size: var(--concorde-text-sm);
+  white-space: pre-line;
+}
+
+/* Radio Control Styles */
+.radioControl {
+  display: flex;
+  align-items: inherit;
+  justify-content: inherit;
+  position: relative;
+}
+
+.radioIcon {
+  color: var(--radio-unchecked-color);
+}
+
+.radioIconChecked {
+  color: var(--concorde-primary-color);
+}
+
+/* Position Styles */
+.position-top {
+  flex-direction: column-reverse;
+  align-items: center;
+  gap: var(--concorde-spacing);
+}
+
+.position-bottom {
+  flex-direction: column;
+  align-items: center;
+  gap: var(--concorde-spacing);
+}
+
+.position-start {
+  flex-direction: row-reverse;
+}
+
+.position-end {
+  flex-direction: row;
+}
+
+/* Generic Error State Styles */
+.error {
+  color: var(--radio-error-color);
+}
+
+/* Disabled State Styles */
+.disabled {
+  cursor: default;
+  opacity: var(--concorde-disabled-opacity);
+
+  .radioIconChecked {
+    color: var(--radio-unchecked-color);
+  }
+}
+
+.radioInput:focus-visible + .radioIcon {
+  outline: none;
+}

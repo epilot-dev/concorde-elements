@@ -1,0 +1,60 @@
+/* List Root Styles */
+.list {
+  font-family: var(--concorde-font-family);
+  margin: 0;
+  padding: 0;
+  position: relative;
+  list-style-type: "";
+}
+
+/* List Item Root Styles */
+.list-item {
+  width: 100%;
+  display: flex;
+  position: relative;
+  box-sizing: border-box;
+  text-align: left;
+  align-items: flex-start;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  justify-content: flex-start;
+  text-decoration: none;
+  gap: 6px;
+}
+
+.list-item-clickable {
+  cursor: pointer;
+
+  &:hover {
+    color: var(--concorde-list-item-hover-color);
+    background-color: var(--concorde-list-item-hover-background-color);
+  }
+}
+
+.list-item-selected {
+  color: var(--concorde-list-item-selected-color);
+  background-color: var(--concorde-list-item-selected-background-color);
+
+  &:hover {
+    color: var(--concorde-list-item-selected-color);
+    background-color: var(--concorde-list-item-selected-background-color);
+  }
+}
+
+.list-item-disabled {
+  cursor: auto;
+  color: inherit;
+  background-color: initial;
+}
+
+/* List Item Content Styles */
+.list-item-content {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+/* List Item Adornment Styles */
+.list-item-adornment {
+  flex-shrink: 0;
+  display: flex;
+}

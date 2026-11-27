@@ -1,0 +1,39 @@
+.root {
+  --link-color: var(--concorde-link-color, var(--concorde-primary-color));
+  --link-hover-color: var(--concorde-link-hover-color, var(--link-color));
+
+  font-family: var(--concorde-font-family);
+  color: var(--link-color);
+  text-decoration: none;
+
+  &:hover {
+    color: var(--link-hover-color);
+    text-decoration: underline;
+  }
+}
+
+/* As a button, none of the button's own look remains. Without specificity, so the
+   link's styles above and any consumer's styles still win. */
+:where(.button) {
+  all: unset;
+}
+
+.button {
+  cursor: pointer;
+  border-radius: var(--concorde-border-radius);
+
+  &:focus-visible {
+    outline: 2px solid var(--concorde-primary-color);
+    outline-offset: 2px;
+  }
+}
+
+.disabled {
+  pointer-events: none;
+  cursor: default;
+
+  &:hover {
+    color: var(--link-color);
+    text-decoration: none;
+  }
+}
